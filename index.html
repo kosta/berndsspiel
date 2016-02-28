@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <title>Leons Spiel</title>
+    <style>
+      body {
+        background-color: #444;
+      }
+
+      .universum {
+        width: 1000px;
+        height: 600px;
+        margin: auto;
+        background-color: black;
+      }
+
+      .stern {
+        color: white;
+        position: relative;
+        display: inline-block;
+        /* TODO: Die Verschiebung nach links muss abhängig von der Textbreite sein*/;
+        margin: -10px -10px;
+      }
+
+      .stern div {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        margin: auto auto 3px;
+      }
+
+      .orion {
+        left: 500px;
+        top: 300px;
+      }
+
+      .orion div {
+        background-color: white;
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script>
+      $(function() {
+        "use strict";
+        var universum = (function() {
+          var sterne = [
+            {
+              name: "Orion",
+              x: 500,
+              y: 300,
+              farbe: "blue"
+            },
+            {
+              name: "Golf",
+              x: 400,
+              y: 200,
+              farbe: "white"
+            },
+            {
+              name: "Alpha",
+              x: 100,
+              y: 500,
+              farbe: 'yellow'
+            },
+            {
+              name: "Gehirn",
+              x: 900,
+              y: 450,
+              farbe: 'darkgoldenrod'
+            },
+            {
+              name: "Gift",
+              x: 800,
+              y: 100,
+              farbe: "lime"
+            },
+            {
+              name: "Citrin",
+              x: 170,
+              y: 220,
+              farbe: '#A4BA23'
+            },
+            {
+              name: "Zeta",
+              x: 700,
+              y: 350,
+              farbe: "crimson"
+            }
+          ];
+
+          var universum = $('.universum');
+          for(var i = 0; i < sterne.length; i += 1) {
+            var stern = sterne[i];
+            var el = $('<div><div></div>' + stern.name + '</div>');
+            el.addClass('stern').css('left', stern.x).css('top', stern.y);
+            el.find('div').css('background-color', stern.farbe);
+            stern.el = el;
+            universum.append(el);
+          }
+
+          return {
+            sterne: sterne
+          }
+        }());
+      });
+    </script>
+  </head>
+  <body>
+    <div class="universum">
+      <!-- <div class="stern orion"><div></div>
+          Orion
+      </div> -->
+    </div>
+  </body>
+</html>
